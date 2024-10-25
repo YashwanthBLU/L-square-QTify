@@ -1,18 +1,9 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import Card from "../Card/Card";
 import styles from "./Section.module.css";
-import axios from "axios";
 
-function Section() {
-  const [albums, setAlbums] = useState([]);
+function Section({ title, albums }) {
   const [collapsed, setCollapsed] = useState(false);
-
-  useEffect(() => {
-    axios
-      .get(`https://qtify-backend-labs.crio.do/albums/top`)
-      .then((response) => setAlbums(response.data))
-      .catch((error) => console.error(error));
-  }, []);
 
   const toggleCollapse = () => {
     setCollapsed(!collapsed);
@@ -20,7 +11,7 @@ function Section() {
   return (
     <div className={styles.section}>
       <div>
-        <h2>Top Albums</h2>
+        <h2>{title}</h2>
         <button onClick={toggleCollapse}>
           {collapsed ? "Show all" : "Collapse"}
         </button>
