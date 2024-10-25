@@ -9,6 +9,13 @@
   gap: 30px;
 }
 
-.hero_image {
-  padding: 100px;
+.hero_content {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 20px;
 }
+
+/* .hero_image {
+  padding: 20px;
+} */
