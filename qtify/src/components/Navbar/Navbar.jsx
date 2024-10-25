@@ -6,6 +6,10 @@ import Search from "../Search/Search"; // Ensure this component exists or create
 import styles from "./Navbar.module.css";
 
 function Navbar({ searchData }) {
+  const handleClick = () => {
+    console.log("clicked");
+  };
+
   return (
     <nav className={styles.navbar}>
       <Link to="/">
@@ -15,7 +19,12 @@ function Navbar({ searchData }) {
         placeholder="Search a song of your choice"
         searchData={searchData}
       />
-      <Button text="Give Feedback" />
+      <Button
+        text="Give Feedback"
+        onClick={() => {
+          handleClick();
+        }}
+      />
     </nav>
   );
 }
