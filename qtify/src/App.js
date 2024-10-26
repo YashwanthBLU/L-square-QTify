@@ -9,6 +9,8 @@ import axios from "axios";
 function App() {
   const [topAlbums, setTopAlbums] = useState([]);
   const [newAlbums, setNewAlbums] = useState([]);
+  const [songs, setSongs] = useState([]);
+  const [genres, setGenre] = useState([]);
 
   useEffect(() => {
     const fetchTopAlbums = async () => {
@@ -25,8 +27,24 @@ function App() {
       setNewAlbums(response.data);
     };
 
+    const fetchSongs = async () => {
+      const response = await axios.get(
+        `https://qtify-backend-labs.crio.do/songs`,
+      );
+      setSongs(response.data);
+    };
+
+    const fetchGenre = async () => {
+      const response = await axios.get(
+        `https://qtify-backend-labs.crio.do/genres`,
+      );
+      console.log(response.data);
+      setGenre(response.data.data);
+    };
     fetchTopAlbums();
     fetchNewAlbums();
+    fetchSongs();
+    fetchGenre();
   }, []);
 
   return (
@@ -36,6 +54,12 @@ function App() {
         <Hero />
         <Section title="Top Albums" albums={topAlbums} />
         <Section title="New Albums" albums={newAlbums} />
+        <Section
+          title="Songs"
+          songs={songs}
+          genres={genres}
+          isSongsSection={true}
+        />
       </div>
     </Router>
   );
