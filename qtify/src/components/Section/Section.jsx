@@ -15,7 +15,7 @@ function Section({ title, albums }) {
       <div>
         <h2>{title}</h2>
         <button onClick={toggleView}>
-          {showCarousel ? "Show all" : "Collapse"}
+          {showCarousel ? "Show All" : "Collapse"}
         </button>
       </div>
       {showCarousel ? (
