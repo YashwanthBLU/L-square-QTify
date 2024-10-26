@@ -5,7 +5,7 @@ import Carousel from "../Carousel/Carousel";
 
 function Section({ title, albums }) {
   // const [collapsed, setCollapsed] = useState(false);
-  const [showCarousel, setShowCarousel] = useState(false);
+  const [showCarousel, setShowCarousel] = useState(true);
 
   const toggleView = () => {
     setShowCarousel((prev) => !prev);
