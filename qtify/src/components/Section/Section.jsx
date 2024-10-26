@@ -8,7 +8,8 @@ function Section({ title, albums }) {
   const [showCarousel, setShowCarousel] = useState(false);
 
   const toggleView = () => {
-    setShowCarousel(!showCarousel);
+    setShowCarousel((prev) => !prev);
+    setTimeout(() => {}, 500); // Give the DOM some buffer time.
   };
   return (
     <div className={styles.section}>
