@@ -1,0 +1,31 @@
+.carousel {
+  width: 100%;
+  padding: 20px 0;
+}
+
+.slide {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.leftButton,
+.rightButton {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 10;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 10px;
+}
+
+.leftButton {
+  left: -20px;
+}
+
+.rightButton {
+  right: -20px;
+}

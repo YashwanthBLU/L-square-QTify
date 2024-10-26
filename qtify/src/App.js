@@ -11,15 +11,22 @@ function App() {
   const [newAlbums, setNewAlbums] = useState([]);
 
   useEffect(() => {
-    axios
-      .get(`https://qtify-backend-labs.crio.do/albums/top`)
-      .then((response) => setTopAlbums(response.data))
-      .catch((error) => console.error(error));
+    const fetchTopAlbums = async () => {
+      const response = await axios.get(
+        "https://qtify-backend-labs.crio.do/albums/top",
+      );
+      setTopAlbums(response.data);
+    };
 
-    axios
-      .get(`https://qtify-backend-labs.crio.do/albums/new`)
-      .then((response) => setNewAlbums(response.data))
-      .catch((error) => console.error(error));
+    const fetchNewAlbums = async () => {
+      const response = await axios.get(
+        "https://qtify-backend-labs.crio.do/albums/new",
+      );
+      setNewAlbums(response.data);
+    };
+
+    fetchTopAlbums();
+    fetchNewAlbums();
   }, []);
 
   return (

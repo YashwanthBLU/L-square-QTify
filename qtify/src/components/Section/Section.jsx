@@ -1,31 +1,37 @@
 import React, { useState } from "react";
 import Card from "../Card/Card";
 import styles from "./Section.module.css";
+import Carousel from "../Carousel/Carousel";
 
 function Section({ title, albums }) {
-  const [collapsed, setCollapsed] = useState(false);
+  // const [collapsed, setCollapsed] = useState(false);
+  const [showCarousel, setShowCarousel] = useState(false);
 
-  const toggleCollapse = () => {
-    setCollapsed(!collapsed);
+  const toggleView = () => {
+    setShowCarousel(!showCarousel);
   };
   return (
     <div className={styles.section}>
       <div>
         <h2>{title}</h2>
-        <button onClick={toggleCollapse}>
-          {collapsed ? "Show all" : "Collapse"}
+        <button onClick={toggleView}>
+          {showCarousel ? "Show all" : "Collapse"}
         </button>
       </div>
-      <div className={`${styles.grid} ${collapsed ? styles.collapsed : ""}`}>
-        {albums.map((album) => (
-          <Card
-            key={album.id}
-            image={album.image}
-            follows={album.follows}
-            title={album.title}
-          />
-        ))}
-      </div>
+      {showCarousel ? (
+        <Carousel items={albums} />
+      ) : (
+        <div className={styles.grid}>
+          {albums.map((album) => (
+            <Card
+              key={album.id}
+              image={album.image}
+              follows={album.follows}
+              title={album.title}
+            />
+          ))}
+        </div>
+      )}
     </div>
   );
 }
